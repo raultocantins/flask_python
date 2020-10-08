@@ -11,8 +11,8 @@
  
  exemplo("pip install flask, pip install flask_pymongo, pip install bcrypt").
  
- Feito isso agora basta renomear a conexão com banco de dados do mongo ("mongodb+srv://<nomeusuario>:<senhausuario>@cluster0.ebc1x.mongodb.net/<bancodedados>?retryWrites=true&w=majority"),
- onde têm nomeusuario pelo seu usuário e senhausuario por sua senha e bancodedados pelo nome do seu banco de dados mongo."obs:retirar <>"
+ Feito isso agora basta renomear a conexão com banco de dados do mongo ("mongodb+srv://"nomeusuario":"senhausuario"@cluster0.ebc1x.mongodb.net/"bancodedados"?retryWrites=true&w=majority"),
+ onde têm nomeusuario pelo seu usuário e senhausuario por sua senha e bancodedados pelo nome do seu banco de dados mongo."obs:retirar "" "
  
  ## #Features
  
