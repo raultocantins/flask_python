@@ -3,7 +3,7 @@
  
  ## #Clonando o Projeto
  
- Para clonar o projeto para acessar seu terminal e digitar o comando ("git clone https://github.com/raultocantins/flask_python").
+ Para clonar o projeto para acessar seu terminal e digitar o comando ("git clone https://github.com/raultocantins/flask_python.git").
  Agora acesse a pasta do projeto e mão na massa.
  
  ## #Rodando o projeto 
