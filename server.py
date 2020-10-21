@@ -54,7 +54,7 @@ def verify_and_decode_jwt(jwt):
 # Criando uma instância do flask
 app = Flask(__name__)
 app.secret_key = "secretKey"
-app.config['MONGO_URI'] = "mongodb+srv://admin:3571592486@cluster0.ebc1x.mongodb.net/Users?retryWrites=true&w=majority"
+app.config['MONGO_URI'] = "mongodb+srv://<USER>:<PASSWORD>@cluster0.ebc1x.mongodb.net/<DATABASE>?retryWrites=true&w=majority"
 
 mongo = PyMongo(app)
 app.static_folder = '.'
