@@ -10,7 +10,7 @@ import hashlib
 import base64
 import json 
 import datetime
-
+from flask_cors import CORS
 
 secret_key = '52d3f853c19f8b63c0918c126422aa2d99b1aef33ec63d41dea4fadf19406e54'
 #criando função para criação do token jwt
@@ -53,8 +53,9 @@ def verify_and_decode_jwt(jwt):
 
 # Criando uma instância do flask
 app = Flask(__name__)
+CORS(app)
 app.secret_key = "secretKey"
-app.config['MONGO_URI'] = "mongodb+srv://<USER>:<PASSWORD>@cluster0.ebc1x.mongodb.net/<DATABASE>?retryWrites=true&w=majority"
+app.config['MONGO_URI'] = "mongodb+srv://admin:3571592486@cluster0.ebc1x.mongodb.net/Users?retryWrites=true&w=majority"
 
 mongo = PyMongo(app)
 app.static_folder = '.'
@@ -141,13 +142,13 @@ def update_user(id):
 #Rota de signin da api, validando user e retornando token
 @app.route('/signin',methods=['POST'])
 def signin():
+    print(request)
     _json = request.json    
     _email = _json['email']
     _password = _json['password']
     if _email and _password and request.method == 'POST':
       id=mongo.db.user.find_one({"email":_email})
       if id:
-
          check=check_password_hash(id["pwd"] , _password )   
       else:
           return jsonify("Usuario não cadastrado.")
@@ -157,7 +158,7 @@ def signin():
         'userId':str(ObjectId(id['_id'])),
         'name':str(id['name']),
         'email':id['email'],
-        'exp': (datetime.datetime.now() + datetime.timedelta(minutes=1)).timestamp(),}
+        'exp': (datetime.datetime.now() + datetime.timedelta(minutes=30)).timestamp(),}
         jwt_created = create_jwt(payload)        
         resp={"token":jwt_created}     
         return resp
@@ -167,7 +168,7 @@ def signin():
 #rota para validação do token     
 @app.route('/validate',methods=['POST'])
 def validate():
-    _json=request.json
+    _json=request.json   
     _token=_json['token']
     if _token and request.method=="POST":
         decoded_jwt = verify_and_decode_jwt(_token)
@@ -182,5 +183,5 @@ def validate():
 
 if __name__ == '__main__':
     # Definindo host e porta para instância do flask
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=4001, debug=True)
     # Rodando o server
