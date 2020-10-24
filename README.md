@@ -19,6 +19,9 @@
  Uma boa opção para desenvolver mais a api é o utilizar o token na api e melhorar a segurança da api.
  #Acesse releases com os novos features da api :).
  
+ ## Documentação completa 
+ https://onionhack.netlify.app/posts/apiwithpython/
+ 
  ###Bora codar devs.
  
  
